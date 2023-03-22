@@ -1,5 +1,5 @@
 {
-    "name": "notback-php/notback",
+    "name": "notback/notback",
     "description": "A PHP framework for building front-end web development",
     "type": "library",
     "require": {
