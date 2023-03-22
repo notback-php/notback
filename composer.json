@@ -3,8 +3,7 @@
     "description": "A PHP framework for building front-end web development",
     "type": "library",
     "require": {
-      "php": ">=5.3.0",
-      "notback-php/notback": "master@dev"
+      "php": ">=5.3.0"
     },
     "license": "proprietary",
     "authors": [
