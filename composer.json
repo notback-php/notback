@@ -7,6 +7,7 @@
       "lib-openssl": "*"
     },
     "license": "proprietary",
+    "minimum-stability": "dev",
     "authors": [
       {
         "name": "Simon Degn",
