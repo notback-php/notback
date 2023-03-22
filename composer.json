@@ -1,0 +1,21 @@
+{
+    "name": "notback/notback",
+    "description": "A PHP framework for building front-end web development",
+    "type": "library",
+    "require": {
+      "php": ">=5.3.0"
+    },
+    "license": "proprietary",
+    "authors": [
+      {
+        "name": "Simon Degn",
+        "email": "hej@simondegn.dk"
+      }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+          "RandomPassword\\": "src/main.php"
+        }
+    }
+  }
