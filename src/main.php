@@ -1,9 +1,7 @@
 <?php
 
-
 require_once('elements.php');
     
-
 class PageStyle {
 
     static public $pageStyleAttributes = [];
@@ -219,11 +217,9 @@ function is_attribute_array($arr) {
 
 
 function Page(...$content) {
-
     echo PageStyle::getPageStyling();
 
     $pageContent = "";
-
     foreach ($content as $part) {
         if (is_string($part)) {
             $pageContent .= $part;
