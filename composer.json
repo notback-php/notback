@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
       "php": ">=5.3.0",
-      "lib-openssl": "*"
+      "lib-openssl": "*",
+      "notback/notback": "0.0.1"
     },
     "license": "proprietary",
     "minimum-stability": "dev",
