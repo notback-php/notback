@@ -1,5 +1,7 @@
 <?php
 
+echo "lol";
+
 require_once('elements.php');
     
 class PageStyle {
@@ -8,7 +10,6 @@ class PageStyle {
     static public $pageStyleReusableClassNames = [];
 
     static function addStylingClass($className, $styleAttributes) {
-
 
         $is_unique = true;
         $is_reuse_key = false;
