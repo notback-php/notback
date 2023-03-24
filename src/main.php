@@ -1,7 +1,5 @@
 <?php
 
-echo "lol";
-
 require_once('elements.php');
     
 class PageStyle {
