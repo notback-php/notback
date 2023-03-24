@@ -48,35 +48,6 @@ class ScriptElement extends Element {
         $this->isOpenTag = true;
         $this->update();
     }
-
-    // Todo: states
-    function src($source) {
-        return  $this->setAttribute('src', $source);
-    }
-
-    function async() {
-        return  $this->setAttribute('async', '');
-    }
-
-    function defer() {
-        return  $this->setAttribute('defer', '');
-    }
-
-    function type($type) {
-        return  $this->setAttribute('type', $type);
-    }
-
-    function charset($charset) {
-        return  $this->setAttribute('charset', $charset);
-    }
-
-    function integrity($integrity) {
-        return  $this->setAttribute('integrity', $integrity);
-    }
-
-    function crossorigin($crossorigin) {
-        return  $this->setAttribute('crossorigin', $crossorigin);
-    }
 }
 
 class BlockElement extends Element {
@@ -178,14 +149,6 @@ class HyperlinkElement extends Element {
         $this->isOpenTag = true;
         $this->update();
     }
-
-    function href($u) {
-        return  $this->setAttribute('href', $u);
-    }
-
-    function target($t) {
-        return  $this->setAttribute('target', $t);
-    }
 }
 
 class ImageElement extends Element {
@@ -194,11 +157,6 @@ class ImageElement extends Element {
         $this->className = "image";
         $this->isOpenTag = false;
         $this->update();
-    }
-
-    // Todo: states
-    function src($source) {
-        return  $this->setAttribute('src', $source);
     }
 }
 
@@ -220,10 +178,6 @@ class CheckboxElement extends Element {
         $this->className = "checkbox";
         $this->isOpenTag = false;
         $this->update();
-    }
-
-    function checked() {
-        return  $this->setAttribute('checked', '');
     }
 }
 
@@ -359,10 +313,6 @@ class OptionElement extends Element {
         $this->isOpenTag = true;
         $this->update();
     }
-
-    public function selected() {
-        return  $this->setAttribute('selected', '');
-    }
 }
 
 class TextAreaElement extends Element {
@@ -372,10 +322,6 @@ class TextAreaElement extends Element {
         $this->className = "textarea";
         $this->isOpenTag = true;
         $this->update();
-    }
-
-    function placeholder($placeholder) {
-        return  $this->setAttribute('placeholder', $placeholder);
     }
 }
 
@@ -387,10 +333,6 @@ class InputElement extends Element {
         $this->isOpenTag = false;
         $this->update();
     }
-
-    function type($type) {
-        return  $this->setAttribute('type', $type);
-    }
 }
 
 class iframeElement extends Element {
@@ -401,103 +343,6 @@ class iframeElement extends Element {
         $this->isOpenTag = true;
         $this->update();
     }
-
-    function src($source) {
-        return  $this->setAttribute('src', $source);
-    }
-
-    function frameBorder($frameBorder) {
-        return  $this->setAttribute('frameborder', $frameBorder);
-    }
-
-    function allowFullScreen($allowFullScreen) {
-        return  $this->setAttribute('allowfullscreen', $allowFullScreen);
-    }
-
-    function allow($allow) {
-        return  $this->setAttribute('allow', $allow);
-    }
-
-    function sandbox($sandbox) {
-        return  $this->setAttribute('sandbox', $sandbox);
-    }
-
-    function referrerPolicy($referrerPolicy) {
-        return  $this->setAttribute('referrerpolicy', $referrerPolicy);
-    }
-
-    function srcDoc($srcDoc) {
-        return  $this->setAttribute('srcdoc', $srcDoc);
-    }
-
-    function name($name) {
-        return  $this->setAttribute('name', $name);
-    }
-
-    function title($title) {
-        return  $this->setAttribute('title', $title);
-    }
-
-    function loading($loading) {
-        return  $this->setAttribute('loading', $loading);
-    }
-
-    function seamless($seamless) {
-        return  $this->setAttribute('seamless', $seamless);
-    }
-
-    function allowPaymentRequest($allowPaymentRequest) {
-        return  $this->setAttribute('allowpaymentrequest', $allowPaymentRequest);
-    }
-
-    function csp($csp) {
-        return  $this->setAttribute('csp', $csp);
-    }
-
-    function allowUserMedia($allowUserMedia) {
-        return  $this->setAttribute('allowusermedia', $allowUserMedia);
-    }
-
-    function allowPopupsToEscapeSandbox($allowPopupsToEscapeSandbox) {
-        return  $this->setAttribute('allowpopupstoescapesandbox', $allowPopupsToEscapeSandbox);
-    }
-
-    function allowTopNavigationByUserActivation($allowTopNavigationByUserActivation) {
-        return  $this->setAttribute('allowtopnavigationbyuseractivation', $allowTopNavigationByUserActivation);
-    }
-
-    function allowTopNavigation($allowTopNavigation) {
-        return  $this->setAttribute('allowtopnavigation', $allowTopNavigation);
-    }
-
-    function allowPresentation($allowPresentation) {
-        return  $this->setAttribute('allowpresentation', $allowPresentation);
-    }
-
-    function allowOrientationLock($allowOrientationLock) {
-        return  $this->setAttribute('alloworientationlock', $allowOrientationLock);
-    }
-
-    function allowPointerLock($allowPointerLock) {
-        return  $this->setAttribute('allowpointerlock', $allowPointerLock);
-    }
-
-    function allowModals($allowModals) {
-        return  $this->setAttribute('allowmodals', $allowModals);
-    }
-
-    function allowMicrophone($allowMicrophone) {
-        return  $this->setAttribute('allowmicrophone', $allowMicrophone);
-    }
-
-    function allowMagnet($allowMagnet) {
-        return  $this->setAttribute('allowmagnet', $allowMagnet);
-    }
-
-    function allowKeyboard($allowKeyboard) {
-        return  $this->setAttribute('allowkeyboard', $allowKeyboard);
-    }
-
 }
 
 class OrderedListElement extends Element {
@@ -549,10 +394,6 @@ class RadioElement extends Element {
         $this->isOpenTag = false;
         $this->update();
     }
-
-    function checked() {
-        return  $this->setAttribute('checked', null);
-    }
 }
 
 class FieldsetElement extends Element {
@@ -572,174 +413,6 @@ class VideoElement extends Element {
         $this->className = "video";
         $this->isOpenTag = true;
         $this->update();
-    }
-
-    function src($source) {
-        return  $this->setAttribute('src', $source);
-    }
-
-    function poster($poster) {
-        return  $this->setAttribute('poster', $poster);
-    }
-
-    function preload($preload) {
-        return  $this->setAttribute('preload', $preload);
-    }
-
-    function autoplay($autoplay = null) {
-        return  $this->setAttribute('autoplay', $autoplay);
-    }
-
-    function loop($loop = null) {
-        return  $this->setAttribute('loop', $loop);
-    }
-
-    function muted($muted = null) {
-        return  $this->setAttribute('muted', $muted);
-    }
-
-    function controls($controls = null) {
-        return  $this->setAttribute('controls', $controls);
-    }
-
-    function playsInline($playsInline = null) {
-        return  $this->setAttribute('playsinline', $playsInline);
-    }
-
-    function crossOrigin($crossOrigin) {
-        return  $this->setAttribute('crossorigin', $crossOrigin);
-    }
-
-    function mediaGroup($mediaGroup) {
-        return  $this->setAttribute('mediagroup', $mediaGroup);
-    }
-
-    function disablePictureInPicture($disablePictureInPicture) {
-        return  $this->setAttribute('disablepictureinpicture', $disablePictureInPicture);
-    }
-
-    function disableRemotePlayback($disableRemotePlayback) {
-        return  $this->setAttribute('disableremoteplayback', $disableRemotePlayback);
-    }
-
-    function referrerPolicy($referrerPolicy) {
-        return  $this->setAttribute('referrerpolicy', $referrerPolicy);
-    }
-
-    function preloadDefault($preloadDefault) {
-        return  $this->setAttribute('preloaddefault', $preloadDefault);
-    }
-
-    function preloadMetadata($preloadMetadata) {
-        return  $this->setAttribute('preloadmetadata', $preloadMetadata);
-    }
-
-    function preloadNone($preloadNone) {
-        return  $this->setAttribute('preloadnone', $preloadNone);
-    }
-
-    function preloadAuto($preloadAuto) {
-        return  $this->setAttribute('preloadauto', $preloadAuto);
-    }
-
-    function srcObject($srcObject) {
-        return  $this->setAttribute('srcobject', $srcObject);
-    }
-
-    function srcLang($srcLang) {
-        return  $this->setAttribute('srclang', $srcLang);
-    }
-
-    function default($default) {
-        return  $this->setAttribute('default', $default);
-    }
-
-    function kind($kind) {
-        return  $this->setAttribute('kind', $kind);
-    }
-
-    function label($label) {
-        return  $this->setAttribute('label', $label);
-    }
-
-    function srcType($srcType) {
-        return  $this->setAttribute('srctype', $srcType);
-    }
-
-    function trackDefault($trackDefault) {
-        return  $this->setAttribute('trackdefault', $trackDefault);
-    }
-
-    function trackKind($trackKind) {
-        return  $this->setAttribute('trackkind', $trackKind);
-    }
-
-    function trackLabel($trackLabel) {
-        return  $this->setAttribute('tracklabel', $trackLabel);
-    }
-
-    function trackSrc($trackSrc) {
-        return  $this->setAttribute('tracksrc', $trackSrc);
-    }
-
-    function trackSrcLang($trackSrcLang) {
-        return  $this->setAttribute('tracksrclang', $trackSrcLang);
-    }
-
-    function trackSrcType($trackSrcType) {
-        return  $this->setAttribute('tracksrctype', $trackSrcType);
-    }
-
-    function track($track) {
-        return  $this->setAttribute('track', $track);
-    }
-
-    function mediaSessionKeySystem($mediaSessionKeySystem) {
-        return  $this->setAttribute('mediasessionkeysystem', $mediaSessionKeySystem);
-    }
-
-    function mediaSessionKeySystemConfiguration($mediaSessionKeySystemConfiguration) {
-        return  $this->setAttribute('mediasessionkeysystemconfiguration', $mediaSessionKeySystemConfiguration);
-    }
-
-    function mediaSessionKeySystemMediaCapability($mediaSessionKeySystemMediaCapability) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapability', $mediaSessionKeySystemMediaCapability);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityContentType($mediaSessionKeySystemMediaCapabilityContentType) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilitycontenttype', $mediaSessionKeySystemMediaCapabilityContentType);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityRobustness($mediaSessionKeySystemMediaCapabilityRobustness) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityrobustness', $mediaSessionKeySystemMediaCapabilityRobustness);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityInitializationData($mediaSessionKeySystemMediaCapabilityInitializationData) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityinitializationdata', $mediaSessionKeySystemMediaCapabilityInitializationData);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityInitializationDataInitDataType($mediaSessionKeySystemMediaCapabilityInitializationDataInitDataType) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityinitializationdatainitdatatype', $mediaSessionKeySystemMediaCapabilityInitializationDataInitDataType);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityInitializationDataInitData($mediaSessionKeySystemMediaCapabilityInitializationDataInitData) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityinitializationdatainitdata', $mediaSessionKeySystemMediaCapabilityInitializationDataInitData);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityAudioCapabilities($mediaSessionKeySystemMediaCapabilityAudioCapabilities) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityaudiocapabilities', $mediaSessionKeySystemMediaCapabilityAudioCapabilities);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityAudioCapabilitiesContentType($mediaSessionKeySystemMediaCapabilityAudioCapabilitiesContentType) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityaudiocapabilitiescontenttype', $mediaSessionKeySystemMediaCapabilityAudioCapabilitiesContentType);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityAudioCapabilitiesRobustness($mediaSessionKeySystemMediaCapabilityAudioCapabilitiesRobustness) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityaudiocapabilitiesrobustness', $mediaSessionKeySystemMediaCapabilityAudioCapabilitiesRobustness);
-    }
-
-    function mediaSessionKeySystemMediaCapabilityAudioCapabilitiesChannels($mediaSessionKeySystemMediaCapabilityAudioCapabilitiesChannels) {
-        return  $this->setAttribute('mediasessionkeysystemmediacapabilityaudiocapabilitieschannels', $mediaSessionKeySystemMediaCapabilityAudioCapabilitiesChannels);
     }
 }
 
