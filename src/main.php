@@ -3,66 +3,6 @@
 
 require_once('elements.php');
     
-$pageStyle = [];
-
-/*
-Notback is an front-end framework for PHP. By using function-based components, the framework is easy to learn and use. 
-The elements are cleaner, the code is more readable and the framework is very flexible.
-
-The framework is built on top of PHP and creates HTML with CSS styling. It is still possible to use JavaScript also. 
-
-To get started, you need to install the framework by composer like this:
-
-composer require notback/framework
-
-When it's installed, you can use the framework by including the autoloader in your project like this:
-
-require_once('vendor/autoload.php');
-
-You can also extract the framework in the src folder and use it as a standalone framework.
-
-When the framework is installed, you can start using it by creating a new file and including the autoloader. 
-Then you can create your first "hello word" page like this:
-*/
-
-
-class Main {
-
-    static $startTime;
-    static $endTime;
-    static $showStats = false;
-    static $showErrors = false;
-
-    static function setStartTime() {
-        Main::$startTime = microtime(true);
-    }
-
-    static function setEndTime() {
-        Main::$endTime = microtime(true);
-    }
-
-    static function getExecutionTime() {
-        return Main::$endTime - Main::$startTime;
-    }
-
-    static function getMemoryUsage() {
-        return memory_get_usage();
-    }
-
-    static function getPeakMemoryUsage() {
-        return memory_get_peak_usage();
-    }
-
-    static function getMemoryUsageInMB() {
-        return Main::getMemoryUsage() / 1000000;
-    }
-
-    static function getPeakMemoryUsageInMB() {
-        return Main::getPeakMemoryUsage() / 1000000;
-    }
-}
-
-
 
 class PageStyle {
 
@@ -280,10 +220,6 @@ function is_attribute_array($arr) {
 
 function Page(...$content) {
 
-    if (Main::$showStats) {
-        Main::setStartTime();
-    }
-
     echo PageStyle::getPageStyling();
 
     $pageContent = "";
@@ -296,19 +232,7 @@ function Page(...$content) {
         }
     }
 
-    echo $pageContent; 
-
-    if (Main::$showStats) {
-        Main::setEndTime();
-        echo "
-            <div style='position: fixed; bottom: 0; right: 0; background: orange; color: black; padding: 20px 20px 0'>
-                <b>Notback Statistics</b>
-                <p>Execution time: " . Main::getExecutionTime() . "s</p>
-                <p>Memory usage: " . Main::getMemoryUsageInMB() . " MB</p>
-                <p>Peak memory usage: " . Main::getPeakMemoryUsageInMB() . " MB</p>
-            </div>
-        ";
-    }
+    echo $pageContent;
 }
 
 
