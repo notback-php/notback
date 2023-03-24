@@ -5,7 +5,7 @@ The elements are cleaner, the code is more readable and the framework is very fl
 
 The framework is built on top of PHP and creates HTML with CSS styling. It is still possible to use JavaScript also.
 
-Read more on [Read more on notback.io](https://notback.io "notback.io")
+Read more on [notback.io](https://notback.io "notback.io")
 
 ## Installation
 
