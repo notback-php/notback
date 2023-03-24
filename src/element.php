@@ -27,7 +27,7 @@ class Element {
 
         if ($this->uniqueClass == '' && $this->className != '') {
             $this->uniqueClass = $this->randomClassName();
-            $this->setAttribute('class', $this->uniqueClass);
+            $this->class($this->uniqueClass);
         }
 
         PageStyle::addStylingClass($this->uniqueClass, $this->styleAttributes);
@@ -112,6 +112,187 @@ class Element {
 
 
     /* Attributes */
+    function accept($val = null) { return $this->setAttribute('accept', $val ?? null); }
+    function acceptCharset($val = null) { return $this->setAttribute('accept-charset', $val ?? null); }
+    function accessKey($val = null) { return $this->setAttribute('accesskey', $val ?? null); }
+    function action($val = null) { return $this->setAttribute('action', $val ?? null); }
+    function align($val = null) { return $this->setAttribute('align', $val ?? null); }
+    function alt($val = null) { return $this->setAttribute('alt', $val ?? null); }
+    function async($val = null) { return $this->setAttribute('async', $val ?? null); }
+    function autocomplete($val = null) { return $this->setAttribute('autocomplete', $val ?? null); }
+    function autofocus($val = null) { return $this->setAttribute('autofocus', $val ?? null); }
+    function autoplay($val = null) { return $this->setAttribute('autoplay', $val ?? null); }
+    function bgcolor($val = null) { return $this->setAttribute('bgcolor', $val ?? null); }
+    function buffered($val = null) { return $this->setAttribute('buffered', $val ?? null); }
+    function challenge($val = null) { return $this->setAttribute('challenge', $val ?? null); }
+    function charset($val = null) { return $this->setAttribute('charset', $val ?? null); }
+    function checked($val = null) { return $this->setAttribute('checked', $val ?? null); }
+    function cite($val = null) { return $this->setAttribute('cite', $val ?? null); }
+    function class($val = null) { return $this->setAttribute('class', $val ?? null); }
+    function classid($val = null) { return $this->setAttribute('classid', $val ?? null); }
+    function cols($val = null) { return $this->setAttribute('cols', $val ?? null); }
+    function colspan($val = null) { return $this->setAttribute('colspan', $val ?? null); }
+    function contenteditable($val = null) { return $this->setAttribute('contenteditable', $val ?? null); }
+    function contextmenu($val = null) { return $this->setAttribute('contextmenu', $val ?? null); }
+    function controls($val = null) { return $this->setAttribute('controls', $val ?? null); }
+    function coords($val = null) { return $this->setAttribute('coords', $val ?? null); }
+    function crossorigin($val = null) { return $this->setAttribute('crossorigin', $val ?? null); }
+    function data($val = null) { return $this->setAttribute('data', $val ?? null); }
+    function datetime($val = null) { return $this->setAttribute('datetime', $val ?? null); }
+    function default($val = null) { return $this->setAttribute('default', $val ?? null); }
+    function defer($val = null) { return $this->setAttribute('defer', $val ?? null); }
+    function dir($val = null) { return $this->setAttribute('dir', $val ?? null); }
+    function dirname($val = null) { return $this->setAttribute('dirname', $val ?? null); }
+    function disabled($val = null) { return $this->setAttribute('disabled', $val ?? null); }
+    function download($val = null) { return $this->setAttribute('download', $val ?? null); }
+    function draggable($val = null) { return $this->setAttribute('draggable', $val ?? null); }
+    function dropzone($val = null) { return $this->setAttribute('dropzone', $val ?? null); }
+    function enctype($val = null) { return $this->setAttribute('enctype', $val ?? null); }
+    function for($val = null) { return $this->setAttribute('for', $val ?? null); }
+    function form($val = null) { return $this->setAttribute('form', $val ?? null); }
+    function formaction($val = null) { return $this->setAttribute('formaction', $val ?? null); }
+    function headers($val = null) { return $this->setAttribute('headers', $val ?? null); }
+    function imageHeight($val = null) { return $this->setAttribute('height', $val ?? null); }
+    function high($val = null) { return $this->setAttribute('high', $val ?? null); }
+    function href($val = null) { return $this->setAttribute('href', $val ?? null); }
+    function hreflang($val = null) { return $this->setAttribute('hreflang', $val ?? null); }
+    function httpEquiv($val = null) { return $this->setAttribute('http-equiv', $val ?? null); }
+    function icon($val = null) { return $this->setAttribute('icon', $val ?? null); }
+    function id($val = null) { return $this->setAttribute('id', $val ?? null); }
+    function ismap($val = null) { return $this->setAttribute('ismap', $val ?? null); }
+    function itemprop($val = null) { return $this->setAttribute('itemprop', $val ?? null); }
+    function keytype($val = null) { return $this->setAttribute('keytype', $val ?? null); }
+    function kind($val = null) { return $this->setAttribute('kind', $val ?? null); }
+    function label($val = null) { return $this->setAttribute('label', $val ?? null); }
+    function lang($val = null) { return $this->setAttribute('lang', $val ?? null); }
+    function language($val = null) { return $this->setAttribute('language', $val ?? null); }
+    function list($val = null) { return $this->setAttribute('list', $val ?? null); }
+    function loop($val = null) { return $this->setAttribute('loop', $val ?? null); }
+    function low($val = null) { return $this->setAttribute('low', $val ?? null); }
+    function manifest($val = null) { return $this->setAttribute('manifest', $val ?? null); }
+    function max($val = null) { return $this->setAttribute('max', $val ?? null); }
+    function maxlength($val = null) { return $this->setAttribute('maxlength', $val ?? null); }
+    function media($val = null) { return $this->setAttribute('media', $val ?? null); }
+    function method($val = null) { return $this->setAttribute('method', $val ?? null); }
+    function min($val = null) { return $this->setAttribute('min', $val ?? null); }
+    function multiple($val = null) { return $this->setAttribute('multiple', $val ?? null); }
+    function muted($val = null) { return $this->setAttribute('muted', $val ?? null); }
+    function name($val = null) { return $this->setAttribute('name', $val ?? null); }
+    function novalidate($val = null) { return $this->setAttribute('novalidate', $val ?? null); }
+    function open($val = null) { return $this->setAttribute('open', $val ?? null); }
+    function optimum($val = null) { return $this->setAttribute('optimum', $val ?? null); }
+    function pattern($val = null) { return $this->setAttribute('pattern', $val ?? null); }
+    function ping($val = null) { return $this->setAttribute('ping', $val ?? null); }
+    function poster($val = null) { return $this->setAttribute('poster', $val ?? null); }
+    function preload($val = null) { return $this->setAttribute('preload', $val ?? null); }
+    function radiogroup($val = null) { return $this->setAttribute('radiogroup', $val ?? null); }
+    function readonly($val = null) { return $this->setAttribute('readonly', $val ?? null); }
+    function rel($val = null) { return $this->setAttribute('rel', $val ?? null); }
+    function required($val = null) { return $this->setAttribute('required', $val ?? null); }
+    function reversed($val = null) { return $this->setAttribute('reversed', $val ?? null); }
+    function rows($val = null) { return $this->setAttribute('rows', $val ?? null); }
+    function rowspan($val = null) { return $this->setAttribute('rowspan', $val ?? null); }
+    function sandbox($val = null) { return $this->setAttribute('sandbox', $val ?? null); }
+    function scope($val = null) { return $this->setAttribute('scope', $val ?? null); }
+    function scoped($val = null) { return $this->setAttribute('scoped', $val ?? null); }
+    function seamless($val = null) { return $this->setAttribute('seamless', $val ?? null); }
+    function selected($val = null) { return $this->setAttribute('selected', $val ?? null); }
+    function shape($val = null) { return $this->setAttribute('shape', $val ?? null); }
+    function size($val = null) { return $this->setAttribute('size', $val ?? null); }
+    function sizes($val = null) { return $this->setAttribute('sizes', $val ?? null); }
+    function span($val = null) { return $this->setAttribute('span', $val ?? null); }
+    function spellcheck($val = null) { return $this->setAttribute('spellcheck', $val ?? null); }
+    function src($val = null) { return $this->setAttribute('src', $val ?? null); }
+    function srcdoc($val = null) { return $this->setAttribute('srcdoc', $val ?? null); }
+    function srclang($val = null) { return $this->setAttribute('srclang', $val ?? null); }
+    function srcset($val = null) { return $this->setAttribute('srcset', $val ?? null); }
+    function start($val = null) { return $this->setAttribute('start', $val ?? null); }
+    function step($val = null) { return $this->setAttribute('step', $val ?? null); }
+    function style($val = null) { return $this->setAttribute('style', $val ?? null); }
+    function tabindex($val = null) { return $this->setAttribute('tabindex', $val ?? null); }
+    function target($val = null) { return $this->setAttribute('target', $val ?? null); }
+    function title($val = null) { return $this->setAttribute('title', $val ?? null); }
+    function type($val = null) { return $this->setAttribute('type', $val ?? null); }
+    function usemap($val = null) { return $this->setAttribute('usemap', $val ?? null); }
+    function value($val = null) { return $this->setAttribute('value', $val ?? null); }
+    function imageWidth($val = null) { return $this->setAttribute('width', $val ?? null); }
+    function wrap($val = null) { return $this->setAttribute('wrap', $val ?? null); }
+    // function content($val = null) { return $this->setAttribute('content', $val ?? null); }
+    // function hidden($val = null) { return $this->setAttribute('hidden', $val ?? null); }
+
+    function onabort($val = null) { return $this->setAttribute('onabort', $val ?? null); }
+    function onafterprint($val = null) { return $this->setAttribute('onafterprint', $val ?? null); }
+    function onbeforeprint($val = null) { return $this->setAttribute('onbeforeprint', $val ?? null); }
+    function onbeforeunload($val = null) { return $this->setAttribute('onbeforeunload', $val ?? null); }
+    function onblur($val = null) { return $this->setAttribute('onblur', $val ?? null); }
+    function oncanplay($val = null) { return $this->setAttribute('oncanplay', $val ?? null); }
+    function oncanplaythrough($val = null) { return $this->setAttribute('oncanplaythrough', $val ?? null); }
+    function onchange($val = null) { return $this->setAttribute('onchange', $val ?? null); }
+    function onclick($val = null) { return $this->setAttribute('onclick', $val ?? null); }
+    function oncontextmenu($val = null) { return $this->setAttribute('oncontextmenu', $val ?? null); }
+    function oncopy($val = null) { return $this->setAttribute('oncopy', $val ?? null); }
+    function oncuechange($val = null) { return $this->setAttribute('oncuechange', $val ?? null); }
+    function oncut($val = null) { return $this->setAttribute('oncut', $val ?? null); }
+    function ondblclick($val = null) { return $this->setAttribute('ondblclick', $val ?? null); }
+    function ondrag($val = null) { return $this->setAttribute('ondrag', $val ?? null); }
+    function ondragend($val = null) { return $this->setAttribute('ondragend', $val ?? null); }
+    function ondragenter($val = null) { return $this->setAttribute('ondragenter', $val ?? null); }
+    function ondragleave($val = null) { return $this->setAttribute('ondragleave', $val ?? null); }
+    function ondragover($val = null) { return $this->setAttribute('ondragover', $val ?? null); }
+    function ondragstart($val = null) { return $this->setAttribute('ondragstart', $val ?? null); }
+    function ondrop($val = null) { return $this->setAttribute('ondrop', $val ?? null); }
+    function ondurationchange($val = null) { return $this->setAttribute('ondurationchange', $val ?? null); }
+    function onemptied($val = null) { return $this->setAttribute('onemptied', $val ?? null); }
+    function onended($val = null) { return $this->setAttribute('onended', $val ?? null); }
+    function onerror($val = null) { return $this->setAttribute('onerror', $val ?? null); }
+    function onfocus($val = null) { return $this->setAttribute('onfocus', $val ?? null); }
+    function onhashchange($val = null) { return $this->setAttribute('onhashchange', $val ?? null); }
+    function oninput($val = null) { return $this->setAttribute('oninput', $val ?? null); }
+    function oninvalid($val = null) { return $this->setAttribute('oninvalid', $val ?? null); }
+    function onkeydown($val = null) { return $this->setAttribute('onkeydown', $val ?? null); }
+    function onkeypress($val = null) { return $this->setAttribute('onkeypress', $val ?? null); }
+    function onkeyup($val = null) { return $this->setAttribute('onkeyup', $val ?? null); }
+    function onload($val = null) { return $this->setAttribute('onload', $val ?? null); }
+    function onloadeddata($val = null) { return $this->setAttribute('onloadeddata', $val ?? null); }
+    function onloadedmetadata($val = null) { return $this->setAttribute('onloadedmetadata', $val ?? null); }
+    function onloadstart($val = null) { return $this->setAttribute('onloadstart', $val ?? null); }
+    function onmessage($val = null) { return $this->setAttribute('onmessage', $val ?? null); }
+    function onmousedown($val = null) { return $this->setAttribute('onmousedown', $val ?? null); }
+    function onmousemove($val = null) { return $this->setAttribute('onmousemove', $val ?? null); }
+    function onmouseout($val = null) { return $this->setAttribute('onmouseout', $val ?? null); }
+    function onmouseover($val = null) { return $this->setAttribute('onmouseover', $val ?? null); }
+    function onmouseup($val = null) { return $this->setAttribute('onmouseup', $val ?? null); }
+    function onmousewheel($val = null) { return $this->setAttribute('onmousewheel', $val ?? null); }
+    function onoffline($val = null) { return $this->setAttribute('onoffline', $val ?? null); }
+    function ononline($val = null) { return $this->setAttribute('ononline', $val ?? null); }
+    function onpagehide($val = null) { return $this->setAttribute('onpagehide', $val ?? null); }
+    function onpageshow($val = null) { return $this->setAttribute('onpageshow', $val ?? null); }
+    function onpaste($val = null) { return $this->setAttribute('onpaste', $val ?? null); }
+    function onpause($val = null) { return $this->setAttribute('onpause', $val ?? null); }
+    function onplay($val = null) { return $this->setAttribute('onplay', $val ?? null); }
+    function onplaying($val = null) { return $this->setAttribute('onplaying', $val ?? null); }
+    function onpopstate($val = null) { return $this->setAttribute('onpopstate', $val ?? null); }
+    function onprogress($val = null) { return $this->setAttribute('onprogress', $val ?? null); }
+    function onratechange($val = null) { return $this->setAttribute('onratechange', $val ?? null); }
+    function onreset($val = null) { return $this->setAttribute('onreset', $val ?? null); }
+    function onresize($val = null) { return $this->setAttribute('onresize', $val ?? null); }
+    function onscroll($val = null) { return $this->setAttribute('onscroll', $val ?? null); }
+    function onsearch($val = null) { return $this->setAttribute('onsearch', $val ?? null); }
+    function onseeked($val = null) { return $this->setAttribute('onseeked', $val ?? null); }
+    function onseeking($val = null) { return $this->setAttribute('onseeking', $val ?? null); }
+    function onselect($val = null) { return $this->setAttribute('onselect', $val ?? null); }
+    function onshow($val = null) { return $this->setAttribute('onshow', $val ?? null); }
+    function onstalled($val = null) { return $this->setAttribute('onstalled', $val ?? null); }
+    function onstorage($val = null) { return $this->setAttribute('onstorage', $val ?? null); }
+    function onsubmit($val = null) { return $this->setAttribute('onsubmit', $val ?? null); }
+    function onsuspend($val = null) { return $this->setAttribute('onsuspend', $val ?? null); }
+    function ontimeupdate($val = null) { return $this->setAttribute('ontimeupdate', $val ?? null); }
+    function onunload($val = null) { return $this->setAttribute('onunload', $val ?? null); }
+    function onvolumechange($val = null) { return $this->setAttribute('onvolumechange', $val ?? null); }
+    function onwaiting($val = null) { return $this->setAttribute('onwaiting', $val ?? null); }
+    function onwheel($val = null) { return $this->setAttribute('onwheel', $val ?? null); }
+
+
     function css($value = []) {
 
         if (is_string($value)) {
@@ -181,8 +362,6 @@ class Element {
 
     }
 
-    function name($value) { return $this->setAttribute('name', $value); }
-
 
     // Full size
     function fullSize(...$a) {
@@ -190,8 +369,8 @@ class Element {
                     ->setHeight((is_array($a[0] ?? null) ? $a[0] : ['normal']), '100%');
     }
 
-    // Size
-    function size(...$a) {
+    // Rect
+    function rect(...$a) {
         $w = $a[count($a)-2] ?? '100%';
         $h = $a[count($a)-1] ?? '100%';
         return $this->setWidth((is_array($a[0] ?? null) ? $a[0] : ['normal']), $w)
