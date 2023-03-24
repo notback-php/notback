@@ -8,6 +8,7 @@
       "lib-openssl": "*"
     },
     "license": "MIT",
+    "homepage": "https://notback.io",
     "minimum-stability": "dev",
     "authors": [
       {
