@@ -1,6 +1,5 @@
 <?php 
 
-require_once('style.php');
 require_once('element.php');
 
 
