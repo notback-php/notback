@@ -12,7 +12,7 @@ Read more on [notback.io](https://notback.io "notback.io")
 To get started, you need to install the framework by composer:
 
 ```
-composer require notback/framework
+composer require notback/notback
 ```
 
 When it's installed, you can use the framework by including the autoloader in your project:
