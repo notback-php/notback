@@ -5,6 +5,26 @@ require_once('elements.php');
     
 $pageStyle = [];
 
+/*
+Notback is an front-end framework for PHP. By using function-based components, the framework is easy to learn and use. 
+The elements are cleaner, the code is more readable and the framework is very flexible.
+
+The framework is built on top of PHP and creates HTML with CSS styling. It is still possible to use JavaScript also. 
+
+To get started, you need to install the framework by composer like this:
+
+composer require notback/framework
+
+When it's installed, you can use the framework by including the autoloader in your project like this:
+
+require_once('vendor/autoload.php');
+
+You can also extract the framework in the src folder and use it as a standalone framework.
+
+When the framework is installed, you can start using it by creating a new file and including the autoloader. 
+Then you can create your first "hello word" page like this:
+*/
+
 
 class Main {
 
@@ -269,7 +289,11 @@ function Page(...$content) {
     $pageContent = "";
 
     foreach ($content as $part) {
-        $pageContent .= $part->innerHTML;
+        if (is_string($part)) {
+            $pageContent .= $part;
+        } else if (is_object($part)) {
+            $pageContent .= $part->innerHTML;
+        }
     }
 
     echo $pageContent; 
