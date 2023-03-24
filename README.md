@@ -1,17 +1,22 @@
+
+
 # notback
 
-Notback is an front-end framework for PHP. By using function-based components, the framework is easy to learn and use.
+Notback is an front-end framework for PHP. By using function-based components, the framework is easy to learn and use. 
 The elements are cleaner, the code is more readable and the framework is very flexible.
 
-The framework is built on top of PHP and creates HTML with CSS styling. It is still possible to use JavaScript also.
+The framework is built on top of PHP and creates HTML with CSS styling. It is still possible to use JavaScript also. 
 
 ## Installation
 
+
 To get started, you need to install the framework by composer:
+
 
 ```
 composer require notback/framework
 ```
+    
 
 When it's installed, you can use the framework by including the autoloader in your project:
 
@@ -20,6 +25,7 @@ require_once('vendor/autoload.php');
 ```
 
 You can also extract the framework in the src folder and use it as a standalone framework.
+
 
 ## Usage/Examples
 
@@ -35,10 +41,13 @@ Page(
 );
 ```
 
+
 ## Documentation
 
 [Documentation](https://notback.io/docs)
 
+
 ## Authors
 
 - [@degn](https://www.github.com/degn)
+
