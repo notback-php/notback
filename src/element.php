@@ -15,13 +15,6 @@ class Element {
     public $isHTML = false; 
     public $type;
 
-    static public $breakpointXS = '520px';
-    static public $breakpointSM = '640px';
-    static public $breakpointMD = '768px';
-    static public $breakpointLG = '1024px';
-    static public $breakpointXL = '1280px';
-    static public $breakpoint2XL = '1536px';
-
 
     public function update() {
 
@@ -44,10 +37,9 @@ class Element {
         if ($this->isOpenTag) {
             // Open tag - potential content
             if (is_array($this->content) && count($this->content) > 0 ) {
-
+            
                 $innerHTML = "";
                 foreach ($this->content as $contentPart) {
-
                     if (is_string($contentPart)) {
                        $innerHTML .= $contentPart;
                     } else {
@@ -185,6 +177,8 @@ class Element {
     function ping($val = null) { return $this->setAttribute('ping', $val ?? null); }
     function poster($val = null) { return $this->setAttribute('poster', $val ?? null); }
     function preload($val = null) { return $this->setAttribute('preload', $val ?? null); }
+    function placeholder($val = null) { return $this->setAttribute('placeholder', $val ?? null); }
+    function playsInline($val = null) { return $this->setAttribute('playsinline', $val ?? null); }
     function radiogroup($val = null) { return $this->setAttribute('radiogroup', $val ?? null); }
     function readonly($val = null) { return $this->setAttribute('readonly', $val ?? null); }
     function rel($val = null) { return $this->setAttribute('rel', $val ?? null); }
@@ -315,7 +309,7 @@ class Element {
     function setStyleProperty($states, $key, $value) { 
        
         foreach ($states as $state) {
-            if (is_class_state($state)) {
+            if (isPseudoClassOrBreakPoint($state)) {
                 $this->styleAttributes[$state][$key] = $value;
             } else {
                 $this->styleAttributes['normal'][$key] = $value;
@@ -640,15 +634,21 @@ class Element {
     function borderLeftWidth(...$a) { return $this->setBorderLeftWidth((is_array($a[0] ?? null) ? $a[0] : ['normal']), ...$a); }
 
     // Border radius
-    function rounded(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '9999px'); }
-    function roundedXS(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '2px'); }
-    function roundedS(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '4px'); }
-    function roundedM(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '8px'); }
-    function roundedL(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '16px'); }
-    function roundedXL(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '32px'); }
-    function rounded2XL(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '64px'); }
-    function rounded3XL(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '128px'); }
-
+    function roundedFull(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '9999px', ...$a); }
+    function roundedNone(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0, ...$a'); }
+    function rounded(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), ...$a); }
+    function roundedTop(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '9999px 9999px 0 0', ...$a); }
+    function roundedT(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '9999px 9999px 0 0', ...$a); }
+    function roundedBottom(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0 0 9999px 9999px', ...$a); }
+    function roundedB(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0 0 9999px 9999px', ...$a); }
+    function roundedLeft(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '9999px 0 0 9999px', ...$a); }
+    function roundedL(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '9999px 0 0 9999px', ...$a); }
+    function roundedRight(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0 9999px 9999px 0', ...$a); }
+    function roundedR(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0 9999px 9999px 0', ...$a); }
+    function roundedTL(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '9999px 0 0 0', ...$a); }
+    function roundedTR(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0 9999px 0 0', ...$a); }
+    function roundedBL(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0 0 0 9999px', ...$a); }
+    function roundedBR(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), '0 0 9999px 0', ...$a); }
     function borderRadius(...$a) { return $this->setBorderRadius((is_array($a[0] ?? null) ? $a[0] : ['normal']), ...$a); }
 
     // Border right
@@ -823,28 +823,6 @@ class Element {
 
     // Cursor
     function pointer(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'pointer'); }
-    function crosshair(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'crosshair'); }
-    function defaultCursor(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'default'); }
-    function move(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'move'); }
-    function eResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'e-resize'); }
-    function neResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'ne-resize'); }
-    function nwResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'nw-resize'); }
-    function nResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'n-resize'); }
-    function seResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'se-resize'); }
-    function swResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'sw-resize'); }
-    function sResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 's-resize'); }
-    function wResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'w-resize'); }
-    function text(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'text'); }
-    function wait(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'wait'); }
-    function help(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'help'); }
-    function progress(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'progress'); }
-    function notAllowed(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'not-allowed'); }
-    function zoomIn(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'zoom-in'); }
-    function zoomOut(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'zoom-out'); }
-    function allScroll(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'all-scroll'); }
-    function colResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'col-resize'); }
-    function rowResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'row-resize'); }
-    function neswResize(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), 'nesw-resize'); }
     function cursor(...$a) { return $this->setCursor((is_array($a[0] ?? null) ? $a[0] : ['normal']), ...$a); }
 
     // Direction

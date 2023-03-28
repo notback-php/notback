@@ -1,7 +1,9 @@
 <?php
 
+require_once('config.php');
 require_once('elements.php');
     
+
 class PageStyle {
 
     static public $pageStyleAttributes = [];
@@ -48,25 +50,13 @@ class PageStyle {
 
                 PageStyle::$pageStyleAttributes[$className] = $reuse_key;
             }
-            
-
         }
-
     }
-
-    static public $breakPoints = [
-        '2XL' => '1536px',
-        'XL' => '1280px',
-        'L' => '1024px',
-        'M' => '768px',
-        'S' => '640px',
-        'XS' => '480px',
-    ];
 
     static function getPageStyling() {
 
         $breakPointContent = ['default' => ''];
-        foreach (PageStyle::$breakPoints as $breakPointKey => $breakPointSize) {
+        foreach (Settings::$breakPoints as $breakPointKey => $breakPointSize) {
             $breakPointContent[$breakPointKey] = "";
         }
 
@@ -91,11 +81,11 @@ class PageStyle {
 
                 if (!$isReusable) {
                     
-                    foreach ($styleAttributes as $styleClassState => $styleClass) {
+                    foreach ($styleAttributes as $pseudoClass => $styleClass) {
 
                         $isBreakpoint = false;
-                        foreach (PageStyle::$breakPoints as $breakPointKey => $breakPointSize) {
-                            if ($breakPointKey == $styleClassState) {
+                        foreach (Settings::$breakPoints as $breakPointKey => $breakPointSize) {
+                            if ($breakPointKey == $pseudoClass) {
                                 $isBreakpoint = true;
                                 break;
                             }
@@ -103,31 +93,30 @@ class PageStyle {
 
                         $css = "";
                         if (!$isBreakpoint) {
-                            if ($styleClassState === 'normal') {
-                                $css .= ".$className {";
+                            if ($pseudoClass === 'normal') {
+                                $css .= ".$className {\n";
                             } else {
-                                $css .= ".$className:$styleClassState {";
+                                $css .= ".$className:$pseudoClass {\n";
                             }
 
                             foreach ($styleClass as $attribute => $value) {
 
                                 if (is_array($value)) {
-                                    echo "det skete igen:";
-                                    var_dump($value);
+                                    throw new Exception("Array values are not supported");
                                 }
 
-                                $css .= "$attribute: $value;";
+                                $css .= "$attribute: $value;\n";
                             }
-                            $css .= "}";
+                            $css .= "}\n\n";
                         } else {
-                            $css .= ".$className {";
+                            $css .= ".$className {\n";
                             foreach ($styleClass as $attribute => $value) {
-                                $css .= "$attribute: $value;";
+                                $css .= "$attribute: $value;\n";
                             }
-                            $css .= "}";
+                            $css .= "}\n\n";
                         }
 
-                        $insertIntoBreakPoint = ($isBreakpoint) ? $styleClassState : 'default';
+                        $insertIntoBreakPoint = ($isBreakpoint) ? $pseudoClass : 'default';
                         $breakPointContent[$insertIntoBreakPoint] .= $css;
                     }
                 } 
@@ -139,56 +128,56 @@ class PageStyle {
 
             $styleClasses = PageStyle::$pageStyleAttributes[$reuseKey];
 
-            foreach ($styleClasses as $styleClassState => $styleClass) {
-
-                if ($styleClassState === 'normal') {
-                    $className = implode(', .', $pageStyleReusableClassName);
-                } else {
-                    $className = implode(":$styleClassState, .", $pageStyleReusableClassName);
-                }
+            foreach ($styleClasses as $pseudoClass => $styleClass) {
 
                 $isBreakpoint = false;
-                foreach (PageStyle::$breakPoints as $breakPointKey => $breakPointSize) {
-                    if ($breakPointKey == $styleClassState) {
+                foreach (Settings::$breakPoints as $breakPointKey => $breakPointSize) {
+                    if ($breakPointKey == $pseudoClass) {
                         $isBreakpoint = true;
                         break;
                     }
                 }
 
+                if (!$isBreakpoint) {
+                    if ($pseudoClass === 'normal') {
+                        $className = implode(', .', $pageStyleReusableClassName);
+                    } else {
+                        $className = implode(":$pseudoClass, .", $pageStyleReusableClassName);
+                    }
+                }
+
                 $css = "";
                 if (!$isBreakpoint) {
-                    if ($styleClassState === 'normal') {
-                        $css .= ".$className {";
+                    if ($pseudoClass === 'normal') {
+                        $css .= ".$className {\n";
                     } else {
-                        $css .= ".$className:$styleClassState {";
+                        $css .= ".$className:$pseudoClass {\n";
                     }
 
                     foreach ($styleClass as $attribute => $value) {
 
                         if (is_array($value)) {
-                            echo "det skete igen:";
-                            var_dump($value);
+                            throw new Exception("Notback Error: value is array");
                         }
 
-                        $css .= "$attribute: $value;";
+                        $css .= "$attribute: $value;\n";
                     }
-                    $css .= "}";
+                    $css .= "}\n\n";
                 } else {
-                    $css .= ".$className {";
+                    $css .= ".$className {\n";
                     foreach ($styleClass as $attribute => $value) {
-                        $css .= "$attribute: $value;";
+                        $css .= "$attribute: $value;\n";
                     }
-                    $css .= "}";
+                    $css .= "}\n\n";
                 }
 
-                $insertIntoBreakPoint = ($isBreakpoint) ? $styleClassState : 'default';
+                $insertIntoBreakPoint = ($isBreakpoint) ? $pseudoClass : 'default';
                 $breakPointContent[$insertIntoBreakPoint] .= $css;
             
             }
         }
         
-
-        $css = ""; // ?????
+        $css = ""; 
 
         $css = ((isset($css) ? $css : '')) . $breakPointContent['default'];
 
@@ -197,25 +186,32 @@ class PageStyle {
         foreach ($reversedBreakPointContent as $breakPointContentKey => $breakPointContentCSS) {
 
             if ($breakPointContentKey !== 'default' && $breakPointContentCSS !== '') {
-                $css .= "@media only screen and (min-width: " . PageStyle::$breakPoints[$breakPointContentKey] . ") {";
+                $css .= "\n\n@media only screen and (min-width: " . Settings::$breakPoints[$breakPointContentKey] . ") {\n";
                 $css .= $breakPointContentCSS;
                 $css .= "}";
             }
         }
 
         return (
-            "<style>$css</style>"
+            "<style>\n$css\n</style>"
         );
     }
 }
 
 
-function is_attribute_array($arr) {
+function isAttributeArray($arr) {
     return ($arr == (array) $arr);
 }
 
 
 function Page(...$content) {
+
+    if (Settings::$lang) {
+        echo "<html lang='" . Settings::$lang . "'>";
+    } else {
+        echo "<html>";
+    }
+
     echo PageStyle::getPageStyling();
 
     $pageContent = "";
@@ -228,24 +224,12 @@ function Page(...$content) {
     }
 
     echo $pageContent;
+    echo "</html>";
 }
 
 
-function is_class_state($value) {
-    return  $value === 'hover' || 
-            $value === 'focus' || 
-            $value === 'active' || 
-            $value === 'visited' || 
-            $value === 'disabled' ||
-            $value === 'XS' ||
-            $value === 'S' ||
-            $value === 'M' ||
-            $value === 'L' ||
-            $value === 'XL' ||
-            $value === '2XL' ||
-            $value === '3XL' ||
-            $value === '4XL' ||
-            $value === '5XL';
+function isPseudoClassOrBreakPoint($value) {
+    return (in_array($value, Settings::$pseudoClasses) || array_key_exists($value, Settings::$breakPoints));
 }
 
 
@@ -267,6 +251,7 @@ function styleProperty($property_key, $args) {
         'border-top',
         'border-width',
         'border',
+        'border-radius',
         'bottom',
         'box-shadow',
         'clip-path',
@@ -341,7 +326,7 @@ function styleProperty($property_key, $args) {
 
         foreach ($extraAttributes as $extraAttribute) {
 
-            if (is_class_state($extraAttribute)) {
+            if (isPseudoClassOrBreakPoint($extraAttribute)) {
                 $arguments = $args;
                 $value = $args[1] ?? '';
             } else {

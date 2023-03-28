@@ -95,10 +95,8 @@ class GridElement extends Element {
         $this->content = $content;
         $this->className = "grid";
         $this->tag = "div";
-        $this->css([
-            "display" => "grid",
-        ]);
         $this->isOpenTag = true;
+        $this->grid();
         $this->update();
     }
 }
@@ -108,11 +106,9 @@ class ColumnElement extends Element {
         $this->content = $content;
         $this->className = "column";
         $this->tag = "div";
-        $this->css([
-            "display" => "flex",
-            "flex-direction" => "column",
-        ]);
         $this->isOpenTag = true;
+        $this->flex();
+        $this->flexDirection('column');
         $this->update();
     }
 }
@@ -122,11 +118,9 @@ class RowElement extends Element {
         $this->content = $content;
         $this->className = "row";
         $this->tag = "div";
-        $this->css([
-            "display" => "flex",
-            "flex-direction" => "row",
-        ]);
         $this->isOpenTag = true;
+        $this->flex();
+        $this->flexDirection('row');
         $this->update();
     }
 }
@@ -567,7 +561,7 @@ function LineBreak() {
 
 function P(...$content) {        
     $element = new TextElement();
-    $element->create($content);
+    $element->create($content, 'p');
     return $element;
 }
 
