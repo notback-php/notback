@@ -205,6 +205,10 @@ function isAttributeArray($arr) {
 
 
 function Page(...$content) {
+    echo PageContent(...$content);
+}
+
+function PageContent(...$content) {
     if (Settings::$lang) {
         $html = "<html lang='" . Settings::$lang . "'>";
     } else {
