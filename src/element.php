@@ -331,7 +331,7 @@ class Element {
                 $value = $currentValue . " " . $value;
             }
             
-            if ($currentValue != $value || ($value == '' && $currentValue != '')) {
+            if ($currentValue != $value || !isset($this->attributes[$key])) {
                 $this->attributes[$key] = $value;
                 $this->update();
             }
