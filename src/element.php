@@ -120,6 +120,8 @@ class Element {
     function charset($val = null) { return $this->setAttribute('charset', $val ?? null); }
     function checked($val = null) { return $this->setAttribute('checked', $val ?? null); }
     function cite($val = null) { return $this->setAttribute('cite', $val ?? null); }
+    function cellPadding($val = null) { return $this->setAttribute('cellpadding', $val ?? null); }
+    function cellSpacing($val = null) { return $this->setAttribute('cellspacing', $val ?? null); }
     function class($val = null) { return $this->setAttribute('class', $val ?? null); }
     function classid($val = null) { return $this->setAttribute('classid', $val ?? null); }
     function cols($val = null) { return $this->setAttribute('cols', $val ?? null); }
