@@ -205,14 +205,17 @@ function isAttributeArray($arr) {
 
 
 function Page(...$content) {
+    echo PageContent(...$content);
+}
 
+function PageContent(...$content) {
     if (Settings::$lang) {
-        echo "<html lang='" . Settings::$lang . "'>";
+        $html = "<html lang='" . Settings::$lang . "'>";
     } else {
-        echo "<html>";
+        $html = "<html>";
     }
 
-    echo PageStyle::getPageStyling();
+    $html .= PageStyle::getPageStyling();
 
     $pageContent = "";
     foreach ($content as $part) {
@@ -223,8 +226,10 @@ function Page(...$content) {
         }
     }
 
-    echo $pageContent;
-    echo "</html>";
+    $html .= $pageContent;
+    $html .= "</html>";
+
+    return $html;
 }
 
 
