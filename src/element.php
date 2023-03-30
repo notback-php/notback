@@ -355,7 +355,11 @@ class Element {
         }
 
     }
-
+    
+    // Show If
+    function showIf(...$a) {                
+        return ((count($a) == 1 ? $a[0] : $a[1])) ? $this->block($a) : $this->hidden($a);
+    }
 
     // Full size
     function fullSize(...$a) {
