@@ -32,7 +32,7 @@ When the framework is installed, you can start using it by creating a new file a
 
 require 'vendor/autoload.php';
 
-echo Page(
+Page(
     "Hello World!"
 );
 ```
