@@ -37,10 +37,10 @@ Page(
 );
 ```
 
-## Documentation
+## Documentation & More
 
-[Documentation](https://notback.io/docs)
-[Examples](https://notback.io/examples)
+- [Documentation](https://notback.io/docs)
+- [Examples](https://notback.io/examples)
 
 ## Authors
 
