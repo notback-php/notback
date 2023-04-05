@@ -40,6 +40,7 @@ Page(
 ## Documentation
 
 [Documentation](https://notback.io/docs)
+[Examples](https://notback.io/examples)
 
 ## Authors
 
