@@ -308,3 +308,21 @@ function Video(...$content) {
     $element->create($content);
     return $element;
 }
+
+function Main(...$content) {
+    $element = new MainElement();
+    $element->create($content);
+    return $element;
+}
+
+function Aside(...$content) {
+    $element = new AsideElement();
+    $element->create($content);
+    return $element;
+}
+
+function Section(...$content) {
+    $element = new SectionElement();
+    $element->create($content);
+    return $element;
+}

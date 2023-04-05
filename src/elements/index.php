@@ -1,5 +1,6 @@
 <?php 
 
+    require_once "aside.php";
     require_once "block.php";
     require_once "body.php";
     require_once "button.php";
@@ -21,11 +22,13 @@
     require_once "lineBreak.php";
     require_once "listItem.php";
     require_once "nav.php";
+    require_once "main.php";
     require_once "option.php";
     require_once "orderedList.php";
     require_once "radio.php";
     require_once "row.php";
     require_once "script.php";
+    require_once "section.php";
     require_once "select.php";
     require_once "table.php";
     require_once "tableBody.php";
